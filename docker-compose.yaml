@@ -13,5 +13,10 @@ services:
     image: sha256:19391d44cb2b64605630a84a7238e59d4e135b80fc362c8b5cb5228d1e491a51
     ports:
       - "8080:8080"
+    healthcheck:
+      test: "curl -f http://0.0.0.0:8080/"
+      interval: 15s
+      timeout: 1m
+      retries: 2
     environment:
       - GIN_MODE=release
