@@ -6,11 +6,14 @@ import (
 	"github.com/tavsec/gin-healthcheck/checks"
 	"github.com/tavsec/gin-healthcheck/config"
 	"net/http"
+	"os"
 )
 
 type ip struct {
 	Host string `json:"host"`
 }
+
+var PORT = os.Getenv("PORT")
 
 var hostIp ip
 
@@ -29,7 +32,7 @@ func StartService() {
 
 	healthcheck.New(router, config.DefaultConfig(), []checks.Check{})
 
-	err := router.Run("localhost:8080")
+	err := router.Run("0.0.0.0:" + PORT)
 	if err != nil {
 		return
 	}
