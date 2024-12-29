@@ -18,7 +18,7 @@ var PORT = os.Getenv("PORT")
 var hostIp ip
 
 func getIP(c *gin.Context) {
-	if header := c.Request.Header.Get("X-Forwarded-For"); header != "" {
+	if header := c.Request.Header.Values("X-Forwarded-For")[0]; header != "" {
 		hostIp = ip{Host: header}
 	} else {
 		hostIp = ip{Host: c.Request.RemoteAddr}
