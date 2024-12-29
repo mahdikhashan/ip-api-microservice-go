@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.7"
 
 services:
   reverse-proxy:
@@ -10,7 +10,7 @@ services:
     ports:
       - "80:80"
   web:
-    build: .
+    image: sha256:19391d44cb2b64605630a84a7238e59d4e135b80fc362c8b5cb5228d1e491a51
     ports:
       - "8080:8080"
     environment:
