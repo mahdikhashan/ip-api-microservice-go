@@ -14,6 +14,8 @@ RUN go mod download
 
 RUN CGO_ENABLED=0 GOOS=linux go build -o /service-ip
 
+---
+
 FROM alpine:latest
 
 RUN apk update && apk add --no-cache ca-certificates
